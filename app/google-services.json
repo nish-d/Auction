@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "304534973631",
+    "firebase_url": "https://auction-action-e8d91.firebaseio.com",
+    "project_id": "auction-action-e8d91",
+    "storage_bucket": "auction-action-e8d91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304534973631:android:96a46c9465cf52bf",
+        "android_client_info": {
+          "package_name": "com.nishitadutta.auction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "304534973631-5jk5ea0l5bq8ahor45lo96ju9v06ijht.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nishitadutta.auction",
+            "certificate_hash": "F14D57E12A89AAADD477785746D4D01B60A5DADA"
+          }
+        },
+        {
+          "client_id": "304534973631-8dto6l67r9v53ulf9kohs89avrt5ri1n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXwjR4CbLdTbQkk_7GCzQI6SS4dasKieI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "304534973631-8dto6l67r9v53ulf9kohs89avrt5ri1n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
