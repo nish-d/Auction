@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:background="@color/deepOrange">
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="50dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:layout_gravity="center_vertical">
+
+        <!--ImageView android:src="@drawable/auction_action"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:layout_marginBottom="24dp"
+            android:layout_gravity="center_horizontal" /-->
+
+        <TextView
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Auction Action"
+            android:textSize="40dp"
+            android:textStyle="italic"/>
+
+        <!--Email label-->
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="Email"
+            app:met_textColorHint="@color/white"
+            app:met_primaryColor="@color/white"
+            app:met_floatingLabel="normal"
+            android:layout_margin="10dp" />
+
+
+        <!-- Password Label -->
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Password"
+            app:met_maxCharacters="20"
+            app:met_textColorHint="@color/white"
+            app:met_primaryColor="@color/white"
+            app:met_floatingLabel="normal"
+            android:layout_margin="10dp"
+            />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_login"
+            android:textColor="@color/white"
+            android:background="@color/brown"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:text="Login"/>
+
+        <TextView android:id="@+id/link_signup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:textColor="@color/white"
+            android:text="No account yet? Create one"
+            android:gravity="center"
+            android:textSize="16dip"
+            android:onClick="onSignup"/>
+
+    </LinearLayout>
+</ScrollView>
