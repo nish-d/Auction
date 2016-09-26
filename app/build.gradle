@@ -29,10 +29,12 @@ dependencies {
     compile "org.androidannotations:androidannotations-api:4.1.0"
     compile 'com.android.support:support-v4:23.4.0'
     compile 'com.google.firebase:firebase-auth:9.4.0'
+    compile 'com.google.firebase:firebase-database:9.4.0'
     compile 'com.jakewharton:butterknife:8.2.1'
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
     compile 'com.intuit.sdp:sdp-android:1.0.2'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
+
 }
 apply plugin: 'com.google.gms.google-services'
