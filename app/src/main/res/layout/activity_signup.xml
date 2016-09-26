@@ -107,7 +107,6 @@
                 android:text="Create Account"
                 android:background="@color/brown"
                 android:textColor="@color/white"
-                android:onClick="createAccount"
                 />
 
             <TextView android:id="@+id/tv_login"

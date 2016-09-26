@@ -40,17 +40,17 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-       /* if(auth.getCurrentUser()==null) {
+        if(auth.getCurrentUser()==null) {
 
             Log.e(this.getLocalClassName(), "Not logged in");
-            Intent in = new Intent(this, LoginActivity.class);
+            Intent in = new Intent(this, LoginActivity_.class);
             startActivity(in);
 
             finish();
         }
         else{
             Log.e(this.getLocalClassName(), "logged in");
-        }*/
+        }
 
     }
 
