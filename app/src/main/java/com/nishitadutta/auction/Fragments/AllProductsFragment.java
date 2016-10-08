@@ -1,6 +1,7 @@
 package com.nishitadutta.auction.Fragments;
 
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -11,6 +12,7 @@ import com.nishitadutta.auction.R;
 import com.nishitadutta.auction.Widgets.ProductViewHolder;
 
 import org.androidannotations.annotations.AfterInject;
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
@@ -24,15 +26,19 @@ public class AllProductsFragment extends Fragment {
 
     DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
 
-    @AfterInject
+    @AfterViews
     public void setView(){
         FirebaseRecyclerAdapter firebaseRecyclerAdapter=new FirebaseRecyclerAdapter<Product, ProductViewHolder>
-        (Product.class, R.layout.list_item_product,ProductViewHolder.class, mRef ){
+        (Product.class, R.layout.list_item_product,ProductViewHolder.class, mRef.child("Product") ){
             @Override
             protected void populateViewHolder(ProductViewHolder viewHolder, Product model, int position) {
                 viewHolder.setAttributes(model);
             }
+
+
         };
+        recyclerViewProducts.setAdapter(firebaseRecyclerAdapter);
+        recyclerViewProducts.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
 }

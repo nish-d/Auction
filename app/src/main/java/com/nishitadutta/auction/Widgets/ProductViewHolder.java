@@ -4,11 +4,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.nishitadutta.auction.Objects.Product;
 import com.nishitadutta.auction.R;
 
-import org.androidannotations.annotations.Bean;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +29,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
     public ProductViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
+        
     }
 
     public void setAttributes(Product product){

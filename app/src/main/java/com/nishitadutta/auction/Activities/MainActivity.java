@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import com.google.firebase.auth.FirebaseAuth;
 import com.nishitadutta.auction.Activities.LoginActivity;
 import com.nishitadutta.auction.Fragments.AddProductFragment_;
+import com.nishitadutta.auction.Fragments.AllProductsFragment;
+import com.nishitadutta.auction.Fragments.AllProductsFragment_;
 import com.nishitadutta.auction.R;
 
 public class MainActivity extends AppCompatActivity
@@ -99,7 +101,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_my_bids) {
 
         } else if (id == R.id.nav_all_products) {
-
+            fragment=new AllProductsFragment_();
         } else if (id == R.id.nav_my_requests) {
 
         } else if (id == R.id.nav_share) {
