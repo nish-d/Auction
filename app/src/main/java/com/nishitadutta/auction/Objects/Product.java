@@ -18,6 +18,7 @@ public class Product {
     private Map<String, String> map;
     private ArrayList<Reviews> reviews;
 
+    public Product(){}
 
     private class Reviews {
         public String review;

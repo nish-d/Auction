@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.nishitadutta.auction"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -35,6 +35,8 @@ dependencies {
     compile 'com.intuit.sdp:sdp-android:1.0.2'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    compile 'com.firebaseui:firebase-ui:0.6.0'
+
 
 }
 apply plugin: 'com.google.gms.google-services'
