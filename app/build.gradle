@@ -35,7 +35,7 @@ dependencies {
     compile 'com.intuit.sdp:sdp-android:1.0.2'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
-    compile 'com.firebaseui:firebase-ui:0.6.0'
+    compile 'com.firebaseui:firebase-ui:0.4.4'
     compile "com.daimajia.swipelayout:library:1.2.0@aar"
 
 
