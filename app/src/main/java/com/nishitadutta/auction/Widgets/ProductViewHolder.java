@@ -2,6 +2,7 @@ package com.nishitadutta.auction.Widgets;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.nishitadutta.auction.Objects.Product;
@@ -26,6 +27,9 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.tv_price)
     TextView tvPrice;
 
+    @BindView(R.id.btn_request)
+    Button btnRequest;
+
     public ProductViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
@@ -36,5 +40,11 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         tvProductName.setText(product.getName());
         tvPrice.setText(String.valueOf(product.getPrice()));
         tvDescription.setText(product.getDescription());
+        btnRequest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO: go to another activity pass Product in intent
+            }
+        });
     }
 }
