@@ -12,18 +12,18 @@
         <activity
             android:name=".Activities.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            </activity>
-        <activity android:name=".Activities.LoginActivity_">
-
         </activity>
-        <activity android:name=".Activities.SignupActivity_" />
 
+        <activity android:name=".Activities.LoginActivity_" />
+        <activity android:name=".Activities.SignupActivity_" />
+        <activity android:name=".Activities.BidProductActivity">
+        </activity>
     </application>
 
 </manifest>

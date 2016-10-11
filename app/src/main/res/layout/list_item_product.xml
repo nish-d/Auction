@@ -66,15 +66,15 @@
 
         <Button
             android:id="@+id/btn_request"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_margin="5dp"
             android:layout_marginLeft="70dp"
             android:layout_toRightOf="@id/tv_description"
             android:text="PUT BID"
-            android:background="@color/colorAccent"
-            android:onClick="onRequest"/>
+            android:background="@color/colorAccent"/>
+            <!--android:onClick="onRequest"/>-->
 
     <View
         android:layout_width="match_parent"

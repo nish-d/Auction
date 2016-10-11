@@ -16,7 +16,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nishitadutta.auction.Global.MyApplication_;
 import com.nishitadutta.auction.Objects.Product;
+import com.nishitadutta.auction.Objects.Request;
 import com.nishitadutta.auction.Objects.User;
+
+import org.androidannotations.annotations.Click;
 
 /**
  * Created by Nishita on 25-09-2016.
@@ -31,17 +34,35 @@ public class FirebaseManager {
     public static final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     public static ToastManager toastManager = ToastManager_.getInstance_(MyApplication_.getInstance());
 
-    public static void addProduct(Product product, final Context context) {
+    public static void addProduct(final Product product, final Context context){
         DatabaseReference ref;
-        ref = databaseReference.child(TABLE_PRODUCT).push();
+        ref=databaseReference.child(TABLE_PRODUCT).push();
         ref.setValue(product.getMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
+
                 //Toast.makeText(context, "Your product has been added succesfully", Toast.LENGTH_SHORT).show();
                 toastManager.show("Your product has been added succesfully");
             }
         });
         product.setProductId(ref.getKey());
+    }
+
+    public static void addRequest(Request request, final Context context){
+
+
+        DatabaseReference ref;
+        ref=databaseReference.child(TABLE_REQUEST).push();
+        ref.setValue(request.getMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                toastManager.show("You have bid your price");
+            }
+        });
+        request.setRequestId(ref.getKey());
+
+
         ref = databaseReference.child(TABLE_USER).child(firebaseUser.getUid())
                 .child("products").child(product.getProductId());
         ref.setValue("true");

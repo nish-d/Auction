@@ -1,14 +1,21 @@
 package com.nishitadutta.auction.Fragments;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.TextView;
+
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.nishitadutta.auction.Activities.BidProductActivity;
+import com.nishitadutta.auction.Custom.Constants;
 import com.nishitadutta.auction.Objects.Product;
 import com.nishitadutta.auction.R;
 import com.nishitadutta.auction.Widgets.ProductViewHolder;
@@ -34,10 +41,10 @@ public class AllProductsFragment extends Fragment {
                 (Product.class, R.layout.list_item_product, ProductViewHolder.class, mRef.child("Product")) {
             @Override
             protected void populateViewHolder(ProductViewHolder viewHolder, Product model, int position) {
+
                 viewHolder.setAttributes(model);
 
             }
-
 
         };
         recyclerViewProducts.setAdapter(firebaseRecyclerAdapter);
@@ -46,3 +53,4 @@ public class AllProductsFragment extends Fragment {
     }
 
 }
+

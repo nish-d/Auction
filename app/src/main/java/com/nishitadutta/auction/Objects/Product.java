@@ -11,11 +11,12 @@ import java.util.Map;
  */
 public class Product {
 
-    public final static String COLUMN_NAME="Name";
+    public final static String COLUMN_NAME="Name"; //Name of the product
     public final static String COLUMN_DESCRIPTION="Description";
     public final static String COLUMN_PRICE="Price";
     public final static String COLUMN_USERID="SellerId";
     public final static String COLUMN_USERNAME="SellerName";
+
     private String productId;
     private String Description;
     private String Name;
@@ -69,11 +70,12 @@ public class Product {
   /*  public String getPrice() {
         return Price;
     }*/
+
   public float getPrice() {
       return Price;
   }
 
-  /*  public void setPrice(String price) {
+  /*  public void setPrice(String price){
         Price = price;
     }*/
   public void setPrice(float price) {
