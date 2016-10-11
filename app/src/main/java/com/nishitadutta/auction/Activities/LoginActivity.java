@@ -14,18 +14,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
 import com.nishitadutta.auction.Global.MyApplication_;
 import com.nishitadutta.auction.R;
 import com.nishitadutta.auction.Utils.ToastManager;
 import com.nishitadutta.auction.Utils.ToastManager_;
 
-
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
-
-import butterknife.OnClick;
 
 @EActivity(R.layout.activity_login)
 public class LoginActivity extends AppCompatActivity {

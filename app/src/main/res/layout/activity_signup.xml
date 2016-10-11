@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    android:background="@color/deepOrange">
+    android:background="@drawable/bgts">
 
 <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="beforeDescendants"
     android:padding="15dp"
     android:layout_gravity="center_vertical">
 
@@ -37,11 +38,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Username"
-                app:met_primaryColor="@color/white"
-                app:met_maxCharacters="20"
-                app:met_floatingLabel="highlight"
+                app:met_textColorHint="@color/colorAccent"
+                app:met_primaryColor="@color/colorPrimaryText"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelAnimating="true"
                 android:layout_margin="5dp"
-                app:met_textColorHint="@color/white"
                 />
 
 
@@ -51,10 +53,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Email"
-                app:met_primaryColor="@color/white"
-                app:met_floatingLabel="highlight"
+                app:met_textColorHint="@color/colorAccent"
+                app:met_primaryColor="@color/colorPrimaryText"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelAnimating="true"
                 android:layout_margin="5dp"
-                app:met_textColorHint="@color/white"
                 />
 
             <!-- Password Label -->
@@ -64,9 +68,11 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:hint="Password"
-                app:met_textColorHint="@color/white"
-                app:met_primaryColor="@color/white"
-                app:met_floatingLabel="highlight"
+                app:met_textColorHint="@color/colorAccent"
+                app:met_primaryColor="@color/colorPrimaryText"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelAnimating="true"
                 android:layout_margin="5dp"
                 />
 
@@ -76,11 +82,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:hint="Retype your password"
-                app:met_primaryColor="@color/white"
-                app:met_floatingLabel="highlight"
+                android:hint="Confirm password"
+                app:met_textColorHint="@color/colorAccent"
+                app:met_primaryColor="@color/colorPrimaryText"
+                app:met_floatingLabelTextColor="@color/colorAccent"
+                app:met_floatingLabel="normal"
+                app:met_floatingLabelAnimating="true"
                 android:layout_margin="5dp"
-                app:met_textColorHint="@color/white"
                 />
 
             <!--Phone number-->
@@ -90,9 +98,13 @@
                 android:layout_height="wrap_content"
                 android:inputType="phone"
                 android:hint="Contact no."
-                app:met_primaryColor="@color/white"
-                app:met_floatingLabel="highlight"
-                app:met_textColorHint="@color/white"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/md_white_1000"
+                android:textColorHint="@color/md_grey_500"
+                app:met_baseColor="@android:color/black"
+                app:met_primaryColor="@color/colorAccent"
+                app:met_textColorHint="@color/colorPrimaryText"
+                app:met_underlineColor="@color/md_grey_400"
                 android:layout_margin="5dp"
                 />
 
@@ -105,7 +117,7 @@
                 android:layout_margin="10dp"
                 android:padding="5dp"
                 android:text="Create Account"
-                android:background="@color/brown"
+                android:background="@color/colorPrimary"
                 android:textColor="@color/white"
                 />
 
@@ -114,10 +126,10 @@
                 android:layout_height="wrap_content"
                 android:text="Already a member? Login"
                 android:gravity="center"
-                android:textColor="@color/white"
+                android:textColor="@color/colorAccent"
                 android:layout_marginBottom="20dp"
                 android:textSize="16dip"
                 android:onClick="onSignIn"/>
 
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>

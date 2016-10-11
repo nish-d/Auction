@@ -18,6 +18,8 @@ import com.nishitadutta.auction.Activities.LoginActivity;
 import com.nishitadutta.auction.Fragments.AddProductFragment_;
 import com.nishitadutta.auction.Fragments.AllProductsFragment;
 import com.nishitadutta.auction.Fragments.AllProductsFragment_;
+import com.nishitadutta.auction.Fragments.MyProductsFragment_;
+import com.nishitadutta.auction.Fragments.MyProfileFragment_;
 import com.nishitadutta.auction.R;
 
 public class MainActivity extends AppCompatActivity
@@ -81,7 +83,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            FirebaseAuth.getInstance().signOut();
+            Intent in=new Intent(this, LoginActivity_.class);
+            startActivity(in);
+            finish();
             return true;
         }
 
@@ -98,14 +104,15 @@ public class MainActivity extends AppCompatActivity
             // Handle the camera action
             fragment=new AddProductFragment_();
 
-        } else if (id == R.id.nav_my_bids) {
+        } else if (id == R.id.nav_my_products) {
+            fragment= new MyProductsFragment_();
 
         } else if (id == R.id.nav_all_products) {
             fragment=new AllProductsFragment_();
         } else if (id == R.id.nav_my_requests) {
 
-        } else if (id == R.id.nav_share) {
-
+        } else if (id == R.id.nav_my_profile) {
+            fragment=new MyProfileFragment_();
         } else if (id == R.id.nav_send) {
 
         }

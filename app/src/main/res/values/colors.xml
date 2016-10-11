@@ -3,9 +3,9 @@
     <color name="colorPrimary">#F44336</color>
     <color name="colorPrimaryDark">#D32F2F</color>
     <color name="colorPrimaryLight">#FFCDD2</color>
-    <color name="colorAccent">#607D8B</color>
-    <color name="colorPrimaryText">#212121</color>
-    <color name="colorSecondaryText">#757575</color>
+    <color name="colorAccent">#e92b3e</color>
+    <color name="colorPrimaryText">#030303</color>
+    <color name="colorSecondaryText">#4b4b4b</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
     <color name="deepOrange">#FF5722</color>

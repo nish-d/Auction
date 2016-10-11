@@ -5,7 +5,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Created by Nishita on 25-09-2016.
@@ -21,7 +20,8 @@ public class Product {
     private String Description;
     private String Name;
     private float Price;
-    private String userID;
+    private String SellerId;
+    private String SellerName;
 
     private Map<String, Object> map;
     private ArrayList<Reviews> reviews;
@@ -80,12 +80,12 @@ public class Product {
       Price = price;
   }
 
-    public String getUserID() {
-        return userID;
+    public String getSellerId() {
+        return SellerId;
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void setSellerId(String sellerId) {
+        this.SellerId = sellerId;
     }
 
     public Product( String description, String name, float price) {

@@ -18,11 +18,13 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
 /**
- * Created by Nishita on 29-09-2016.
+ * Created by Nishita on 10-10-2016.
  */
+
 @EFragment(R.layout.fragment_allproducts)
-public class AllProductsFragment extends Fragment {
-    public static final String TAG = "AllProductsFragment";
+public class MyProductsFragment extends Fragment {
+
+    public static final String TAG = "MyProductsFragment";
     @ViewById(R.id.recycler_view_products)
     RecyclerView recyclerViewProducts;
 
@@ -34,8 +36,10 @@ public class AllProductsFragment extends Fragment {
                 (Product.class, R.layout.list_item_product, ProductViewHolder.class, mRef.child("Product")) {
             @Override
             protected void populateViewHolder(ProductViewHolder viewHolder, Product model, int position) {
-                viewHolder.setAttributes(model);
 
+                if (model.getSellerId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
+                    viewHolder.setAttributes(model);
+                }
             }
 
 
@@ -44,5 +48,4 @@ public class AllProductsFragment extends Fragment {
         recyclerViewProducts.setLayoutManager(new LinearLayoutManager(getContext()));
         Log.d(TAG, "setView: " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
     }
-
 }

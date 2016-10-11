@@ -1,9 +1,9 @@
 package com.nishitadutta.auction.Activities;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,18 +15,17 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
-import com.nishitadutta.auction.Activities.LoginActivity;
 import com.nishitadutta.auction.R;
+import com.nishitadutta.auction.Utils.FirebaseManager;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import butterknife.OnClick;
 @EActivity(R.layout.activity_signup)
 public class SignupActivity extends AppCompatActivity {
 
-    private static final String TAG="SignupActivity";
+    private static final String TAG = "SignupActivity";
     @ViewById(R.id.et_name)
     EditText etName;
 
@@ -42,6 +41,8 @@ public class SignupActivity extends AppCompatActivity {
     @ViewById(R.id.et_confirmpassword)
     EditText etConfirmPassword;
 
+    @ViewById(R.id.et_phone)
+    EditText phone;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -67,41 +68,42 @@ public class SignupActivity extends AppCompatActivity {
         };
     }
 
-    public void onSignIn(View view)
-    {
-        Intent intent=new Intent(this, LoginActivity_.class);
+    public void onSignIn(View view) {
+        Intent intent = new Intent(this, LoginActivity_.class);
         startActivity(intent);
         finish();
 
     }
 
     @Click(R.id.btn_signup)
-    public void createAccount()
-    {
+    public void createAccount() {
         //TODO: show progress bar
-        String email=etEmail.getText().toString();
-        String password=etPassword.getText().toString();
+        String email = etEmail.getText().toString();
+        String password = etPassword.getText().toString();
+        final String name = etName.getText().toString();
+        final String phone = etName.getText().toString();
         mAuth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    Log.e(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.e(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
 
-                    // If sign in fails, display a message to the user. If sign in succeeds
-                    // the auth state listener will be notified and logic to handle the
-                    // signed in user can be handled in the listener.
-                    if (!task.isSuccessful()) {
-                        FirebaseAuthException authException = (FirebaseAuthException) task.getException();
-                        String errorCode = authException.getErrorCode();
-                        Log.e(TAG, task.getException().toString() + "\n" + errorCode);
+                        // If sign in fails, display a message to the user. If sign in succeeds
+                        // the auth state listener will be notified and logic to handle the
+                        // signed in user can be handled in the listener.
+                        if (!task.isSuccessful()) {
+                            FirebaseAuthException authException = (FirebaseAuthException) task.getException();
+                            String errorCode = authException.getErrorCode();
+                            Log.e(TAG, task.getException().toString() + "\n" + errorCode);
 
+
+                        } else {
+                            FirebaseManager.addUser(name, phone);
+                            goToMain();
+                            //TODO: hide progress bar
+                        }
                     }
-                    else{
-                       // goToMain();
-                        //TODO: hide progress bar
-                    }
-                }
-            });
+                });
     }
 
     private void goToMain() {

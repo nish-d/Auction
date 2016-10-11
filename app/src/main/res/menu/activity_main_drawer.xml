@@ -5,15 +5,15 @@
         <item
             android:id="@+id/add_product"
             android:icon="@drawable/ic_add_black_24dp"
-            android:title="My Products" />
+            android:title="Sell Products" />
         <item
             android:id="@+id/nav_all_products"
             android:icon="@drawable/ic_shopping_cart_black_24dp"
             android:title="All Products" />
         <item
-            android:id="@+id/nav_my_bids"
+            android:id="@+id/nav_my_products"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="My Bids" />
+            android:title="My Products" />
         <item
             android:id="@+id/nav_my_requests"
             android:icon="@drawable/ic_menu_manage"
@@ -23,9 +23,9 @@
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_my_profile"
+                android:icon="@drawable/ic_account_circle_black_24dp"
+                android:title="My Profile" />
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
