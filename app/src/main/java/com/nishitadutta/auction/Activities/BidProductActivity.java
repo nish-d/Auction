@@ -18,10 +18,12 @@ import com.nishitadutta.auction.Custom.Constants;
 import com.nishitadutta.auction.R;
 
 import org.androidannotations.annotations.Click;
+import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import butterknife.BindView;
 
+@EActivity(R.layout.activity_bid_product)
 public class BidProductActivity extends AppCompatActivity {
 
     DatabaseReference mDatabaseReference;

@@ -61,11 +61,9 @@ public class FirebaseManager {
             }
         });
         request.setRequestId(ref.getKey());
-
-
-        ref = databaseReference.child(TABLE_USER).child(firebaseUser.getUid())
+       /* ref = databaseReference.child(TABLE_USER).child(firebaseUser.getUid())
                 .child("products").child(product.getProductId());
-        ref.setValue("true");
+        ref.setValue("true");*/
     }
 
     public static void addUser(String userName, String phone) {
