@@ -29,14 +29,14 @@ public class BidProductActivity extends AppCompatActivity {
     DatabaseReference mDatabaseReference;
     Request request;
 
-    @ViewById(R.id.tv_description_request)
+    /*@ViewById(R.id.tv_description_request)
     TextView tvDescriptionRequest;
 
     @ViewById(R.id.tv_product_name_request)
     TextView tvProductNameRequest;
 
     @ViewById(R.id.tv_price_request)
-    TextView tvPriceRequest;
+    TextView tvPriceRequest;*/
 
     @ViewById(R.id.et_bid_price)
     EditText etBidPrice;
@@ -46,24 +46,33 @@ public class BidProductActivity extends AppCompatActivity {
 
         request=new Request(Float.parseFloat(etBidPrice.getText().toString()));
         FirebaseManager.addRequest(request, getApplicationContext());
-
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bid_product);
-        Toast.makeText(this, "Entered BidProductActivity", Toast.LENGTH_SHORT).show();
+
+        TextView tvProductNameRequest= (TextView) findViewById(R.id.tv_product_name_request);
+        TextView tvPriceRequest= (TextView) findViewById(R.id.tv_price_request);
+        TextView tvDescriptionRequest= (TextView) findViewById(R.id.tv_description_request);
 
         Intent intent=getIntent();
         String productName=intent.getStringExtra(Constants.EXTRA_NAME);
         String price=intent.getStringExtra(Constants.EXTRA_PRICE);
         String description= intent.getStringExtra(Constants.EXTRA_DESCRIPTION);
+        String productId= intent.getStringExtra(Constants.EXTRA_PRODUCTID);
+
+        //request.setProductId(productId);
+        Toast.makeText(this, "Entered BidProductActivity", Toast.LENGTH_SHORT).show();
+
 
         tvProductNameRequest.setText(productName);
         tvPriceRequest.setText(price);
         tvDescriptionRequest.setText(description);
 
+        Toast.makeText(this, productName+price+description+productId, Toast.LENGTH_LONG).show();
         try{
             mDatabaseReference= FirebaseDatabase.getInstance().getReference().child("Request");
         }

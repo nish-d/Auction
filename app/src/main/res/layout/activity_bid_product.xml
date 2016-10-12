@@ -12,6 +12,7 @@
 
     <TextView
         android:id="@+id/tv_name"
+        android:textStyle="bold"
         android:layout_margin="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +22,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_product_name_request"
-        android:text="Name"
         android:layout_margin="20dp"
         android:layout_toRightOf="@id/tv_name"
         android:layout_weight="1"
@@ -30,6 +30,7 @@
     <TextView
         android:id="@+id/tv_product_price"
         android:layout_margin="20dp"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price: "
@@ -41,7 +42,6 @@
         android:layout_margin="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Price"
         android:layout_below="@id/tv_name"
         android:layout_toRightOf="@id/tv_product_price"
         android:layout_gravity="center"
@@ -51,6 +51,7 @@
         android:id="@+id/tv_product_description"
         android:layout_width="wrap_content"
         android:layout_margin="20dp"
+        android:textStyle="bold"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_product_price"
         android:text="Description: "/>
@@ -62,13 +63,14 @@
         android:layout_margin="20dp"
         android:layout_below="@id/tv_product_price"
         android:layout_toRightOf="@id/tv_product_description"
-        android:text="Description"/>
+        android:text=""/>
 
     <TextView
         android:id="@+id/tv_bid_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
+        android:textStyle="bold"
         android:layout_below="@id/tv_description_request"
         android:text="Bid Price (Rs.)"/>
 
@@ -79,6 +81,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/tv_bid_price"
+        android:inputType="number"
         android:hint="Bid Price"/>
 
     <Button
@@ -91,6 +94,7 @@
         android:text="REQUEST"
         android:inputType="number"
         android:background="@color/colorAccent"
+        android:layout_centerHorizontal="true"
         android:onClick="addRequest"/>
 
 

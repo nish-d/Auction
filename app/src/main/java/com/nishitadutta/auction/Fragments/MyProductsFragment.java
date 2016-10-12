@@ -38,7 +38,7 @@ public class MyProductsFragment extends Fragment {
             protected void populateViewHolder(ProductViewHolder viewHolder, Product model, int position) {
 
                 if (model.getSellerId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
-                    viewHolder.setAttributes(model);
+                    viewHolder.setAttributes(model, position);
                 }
             }
 

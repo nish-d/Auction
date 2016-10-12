@@ -36,8 +36,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.rengwuxian.materialedittext:library:2.1.4'
     compile 'com.firebaseui:firebase-ui:0.4.4'
-    
-
-
+    compile 'com.github.Mariovc:ImagePicker:1.0.3'
 }
 apply plugin: 'com.google.gms.google-services'

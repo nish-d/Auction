@@ -1,7 +1,10 @@
 package com.nishitadutta.auction.Activities;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.support.design.widget.NavigationView;
@@ -12,6 +15,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.nishitadutta.auction.Activities.LoginActivity;
@@ -22,10 +28,14 @@ import com.nishitadutta.auction.Fragments.MyProductsFragment_;
 import com.nishitadutta.auction.Fragments.MyProfileFragment_;
 import com.nishitadutta.auction.R;
 
+import org.androidannotations.annotations.ViewById;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Fragment fragment;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         FirebaseAuth auth= FirebaseAuth.getInstance();
@@ -54,6 +64,7 @@ public class MainActivity extends AppCompatActivity
         }
         else{
             Log.e(this.getLocalClassName(), "logged in");
+
         }
 
     }
@@ -94,6 +105,7 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -121,6 +133,8 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, fragment).commit();
-        return true;
+
+
+    return true;
     }
 }

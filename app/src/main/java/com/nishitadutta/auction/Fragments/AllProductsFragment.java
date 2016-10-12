@@ -42,7 +42,7 @@ public class AllProductsFragment extends Fragment {
             @Override
             protected void populateViewHolder(ProductViewHolder viewHolder, Product model, int position) {
 
-                viewHolder.setAttributes(model);
+                viewHolder.setAttributes(model, position);
 
             }
 

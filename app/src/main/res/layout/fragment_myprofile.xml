@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/header_blank_user"
         android:layout_gravity="center"
+        android:onClick="onProfileImage"
         android:layout_margin="@dimen/_12sdp"/>
     
     <LinearLayout
@@ -78,7 +79,9 @@
 
    <android.support.v7.widget.AppCompatButton
        android:id="@+id/btn_edit"
+       android:layout_margin="10dp"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:text="Edit"/>
+
 </LinearLayout>
