@@ -50,7 +50,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         
     }
 
-    public void setAttributes(final Product product, final int position){
+    public void setAttributes(final Product product){
 
         tvProductName.setText(product.getName());
         tvPrice.setText(String.valueOf(product.getPrice()));

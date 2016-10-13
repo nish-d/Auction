@@ -41,8 +41,10 @@ public class AllProductsFragment extends Fragment {
                 (Product.class, R.layout.list_item_product, ProductViewHolder.class, mRef.child("Product")) {
             @Override
             protected void populateViewHolder(ProductViewHolder viewHolder, Product model, int position) {
-
-                viewHolder.setAttributes(model, position);
+                String productId=this.getRef(position).getKey();
+                Log.e(TAG, "populateViewHolder: " + productId );
+                model.setProductId(productId);
+                viewHolder.setAttributes(model);
 
             }
 

@@ -2,6 +2,7 @@ package com.nishitadutta.auction.Utils;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.widget.EditText;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,7 +27,7 @@ import org.androidannotations.annotations.Click;
  */
 public class FirebaseManager {
 
-
+    public static final String TAG="FirebaseManager";
     public static final String TABLE_PRODUCT = "Product";
     public static final String TABLE_USER = "User";
     public static final String TABLE_REQUEST = "Request";
@@ -87,6 +88,7 @@ public class FirebaseManager {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
+                Log.e(TAG, "onDataChange: " + user.getPhone() );
                 et.setText(user.getPhone());
             }
 

@@ -7,8 +7,10 @@ import android.util.Log;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.nishitadutta.auction.Objects.Product;
 import com.nishitadutta.auction.R;
 import com.nishitadutta.auction.Widgets.ProductViewHolder;
@@ -32,14 +34,16 @@ public class MyProductsFragment extends Fragment {
 
     @AfterViews
     public void setView() {
+
+        final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        Query query = mRef.child("Product").orderByChild("SellerId").equalTo(uid);
         FirebaseRecyclerAdapter firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Product, ProductViewHolder>
-                (Product.class, R.layout.list_item_product, ProductViewHolder.class, mRef.child("Product")) {
+                (Product.class, R.layout.list_item_product, ProductViewHolder.class, query) {
+
             @Override
             protected void populateViewHolder(ProductViewHolder viewHolder, Product model, int position) {
 
-                if (model.getSellerId().equals(FirebaseAuth.getInstance().getCurrentUser().getUid())) {
-                    viewHolder.setAttributes(model, position);
-                }
+                viewHolder.setAttributes(model);
             }
 
 
