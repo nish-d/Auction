@@ -67,7 +67,7 @@ public class Request {
         this.userID = userID;
     }
 
-    public Request(float price) {
+    public Request(float price, String productIdRequest) {
 
 
         String userId= FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -76,7 +76,7 @@ public class Request {
         Price = price;
         map=new HashMap<String, Object>();
 
-        map.put(COLUMN_PRODUCTID, productId);
+        map.put(COLUMN_PRODUCTID, productIdRequest);
         map.put(COLUMN_BIDPRICE,Price);
         map.put(COLUMN_USERID, userId);
     }

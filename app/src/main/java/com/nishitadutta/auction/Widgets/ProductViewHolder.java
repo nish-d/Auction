@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -57,20 +58,24 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
         tvDescription.setText(product.getDescription());
 
         btnRequest.setOnClickListener(new View.OnClickListener() {
+            public static final String TAG = "onProductViewHolderClick";
+
             @Override
             public void onClick(View v) {
+
 
                 Intent intent=new Intent(v.getContext(), BidProductActivity_.class);
                 intent.putExtra(Constants.EXTRA_NAME, tvProductName.getText());
                 intent.putExtra(Constants.EXTRA_PRICE, tvPrice.getText());
                 intent.putExtra(Constants.EXTRA_DESCRIPTION, tvDescription.getText());
+                String productId= product.getProductId();
 
-
+                //Log.e(TAG, "onProductViewHolderClick: ",productId);
                 try {
-                    final String childProductId = mDatabaseReference.getRef().child("Product").getKey();
+                    //final String childProductId = mDatabaseReference.getRef().child("Product").getKey();
                     //childProductId=firebaseRecyclerAdapter.getRef(position).child("Product").getKey();
-                    System.out.print(product.getName() + product.getPrice() + product.getDescription() + childProductId);
-                    intent.putExtra(Constants.EXTRA_PRODUCTID, childProductId);
+                    System.out.print(product.getName() + product.getPrice() + product.getDescription() + productId);
+                    intent.putExtra(Constants.EXTRA_PRODUCTID, productId);
 
                 }
                 catch (Exception e)

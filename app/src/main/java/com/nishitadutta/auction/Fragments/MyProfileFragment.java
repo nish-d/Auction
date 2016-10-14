@@ -1,11 +1,20 @@
 package com.nishitadutta.auction.Fragments;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Camera;
+import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.util.Base64;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -20,6 +29,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.nishitadutta.auction.Global.MyApplication_;
 import com.nishitadutta.auction.Objects.User;
+import com.mvc.imagepicker.ImagePicker;
+import com.nishitadutta.auction.Custom.Constants;
 import com.nishitadutta.auction.R;
 import com.nishitadutta.auction.Utils.FirebaseManager;
 import com.nishitadutta.auction.Utils.ToastManager;
@@ -32,17 +43,25 @@ import org.androidannotations.annotations.ViewById;
 
 import static com.nishitadutta.auction.Utils.FirebaseManager.TABLE_USER;
 
+import java.io.ByteArrayOutputStream;
+
 /**
  * Created by Nishita on 10-10-2016.
  */
 @EFragment(R.layout.fragment_myprofile)
 public class MyProfileFragment extends Fragment {
 
+
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    Bitmap bmp;
+
     public static final String TAG = "MyprofileFragment";
     private static final int REQUEST_CODE_CAMERA = 1;
+
+
     @ViewById(R.id.et_phone_profile)
     public EditText etPhoneProfile;
-    Bitmap bmp;
     @ViewById(R.id.profile_pic)
     ImageView profilePic;
     @ViewById(R.id.et_username_profile)
@@ -53,7 +72,7 @@ public class MyProfileFragment extends Fragment {
     Button btnEdit;
 
     Boolean editMode = false;
-    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+    //firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     ToastManager toastManager = ToastManager_.getInstance_(MyApplication_.getInstance());
 
     public void getPhone() {
@@ -68,6 +87,7 @@ public class MyProfileFragment extends Fragment {
                 etPhoneProfile.setText(user.getPhone());
             }
 
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -77,31 +97,34 @@ public class MyProfileFragment extends Fragment {
     }
 
     @Click(R.id.profile_pic)
-    public void onProfileImage() {
-        //ImagePicker.setMinQuality(600,600);
-        //ImagePicker.pickImage(getActivity(), "Select your image:");
+    public void onProfileImage()
+    {
         Toast.makeText(getActivity(), "Image clicked", Toast.LENGTH_LONG).show();
         Intent intent = new Intent();
         intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, REQUEST_CODE_CAMERA);
     }
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        /*bmp = ImagePicker.getImageFromResult(getActivity(), requestCode, resultCode, data);
-        profilePic.setImageBitmap(bmp);*/
 
-        if (requestCode == REQUEST_CODE_CAMERA)
-            if (resultCode == Activity.RESULT_OK) {
-                //bmp = ImagePicker.getImageFromResult(getActivity(), requestCode, resultCode, data);
-                //profilePic.setImageBitmap(bmp);
+        editor=sharedPreferences.edit();
+
+        if(requestCode==REQUEST_CODE_CAMERA)
+            if(resultCode==Activity.RESULT_OK)
+            {
                 bmp = (Bitmap) data.getExtras().get("data");
                 profilePic.setImageBitmap(bmp);
+                //editor.putString(Constants.SHAREDPREFERENCE, bmp.toString());
+                //editor.commit();
             }
-
-        super.onActivityResult(requestCode, resultCode, data);
+        editor.putString(Constants.SHAREDPREFERENCE, encodeTobase64(bmp));
+       // super.onActivityResult(requestCode, resultCode, data);
     }
+
+    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
     @AfterViews
     public void setUpLayout() {
@@ -123,6 +146,9 @@ public class MyProfileFragment extends Fragment {
             //if editMode is true and user clicks on save button, save the information
             String userName = etUsernameProfile.getText().toString();
             String phone = etPhoneProfile.getText().toString();
+            FirebaseManager.addUser(userName, phone);
+            editMode = false;
+
             if (phone.equals("") || userName.equals("")) {
                 toastManager.show("Phone or UserName cannot be left empty");
                 toggleEditable(true);       //everything should be enabled
@@ -146,7 +172,41 @@ public class MyProfileFragment extends Fragment {
         etPhoneProfile.setEnabled(b);
         etUsernameProfile.setFocusableInTouchMode(b);
         etPhoneProfile.setFocusableInTouchMode(b);
+
     }
 
+    @AfterViews
+    public void onSharedPreference()
+    {
+        sharedPreferences=this.getActivity().getSharedPreferences(Constants.SHAREDPREFERENCE,
+                Context.MODE_PRIVATE);
+
+        String committed =sharedPreferences.getString(Constants.SHAREDPREFERENCE, null);
+
+        if(committed==null)
+        {
+            profilePic.setImageResource(R.drawable.header_blank_user);
+        }
+        else{
+            Bitmap bmp=decodeBase64(committed);
+            profilePic.setImageBitmap(bmp);
+        }
+    }
+
+    public static String encodeTobase64(Bitmap image) {
+        Bitmap immage = image;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        immage.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] b = baos.toByteArray();
+        String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
+        Log.d("Image Log:", imageEncoded);
+        return imageEncoded;
+    }
+
+    public static Bitmap decodeBase64(String input) {
+        byte[] decodedByte = Base64.decode(input, 0);
+        return BitmapFactory
+                .decodeByteArray(decodedByte, 0, decodedByte.length);
+    }
 
 }

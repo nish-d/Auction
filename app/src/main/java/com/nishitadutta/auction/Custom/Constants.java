@@ -12,5 +12,6 @@ public class Constants {
     public static final String EXTRA_PRICE="price";
     public static final String EXTRA_DESCRIPTION="description";
     public static final String EXTRA_PRODUCTID="ProductId";
+    public static final String SHAREDPREFERENCE="profile_picture";
 
 }

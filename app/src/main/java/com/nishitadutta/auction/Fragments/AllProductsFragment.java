@@ -37,15 +37,15 @@ public class AllProductsFragment extends Fragment {
 
     @AfterViews
     public void setView() {
-        FirebaseRecyclerAdapter firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Product, ProductViewHolder>
+        final FirebaseRecyclerAdapter firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Product, ProductViewHolder>
                 (Product.class, R.layout.list_item_product, ProductViewHolder.class, mRef.child("Product")) {
+
             @Override
             protected void populateViewHolder(ProductViewHolder viewHolder, Product model, int position) {
-                String productId=this.getRef(position).getKey();
-                Log.e(TAG, "populateViewHolder: " + productId );
-                model.setProductId(productId);
+                String id =this.getRef(position).getKey();
+                model.setProductId(id);
+                Log.e(TAG, "populateViewHolder:"+id );
                 viewHolder.setAttributes(model);
-
             }
 
         };
