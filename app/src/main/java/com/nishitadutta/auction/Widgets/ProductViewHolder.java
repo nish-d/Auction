@@ -29,9 +29,6 @@ import butterknife.ButterKnife;
  */
 
 public class ProductViewHolder extends RecyclerView.ViewHolder {
-    String childProductId;
-    DatabaseReference mDatabaseReference;
-    FirebaseRecyclerAdapter firebaseRecyclerAdapter;
 
     @BindView(R.id.tv_description)
     TextView tvDescription;
@@ -63,18 +60,14 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
 
-
                 Intent intent=new Intent(v.getContext(), BidProductActivity_.class);
                 intent.putExtra(Constants.EXTRA_NAME, tvProductName.getText());
                 intent.putExtra(Constants.EXTRA_PRICE, tvPrice.getText());
                 intent.putExtra(Constants.EXTRA_DESCRIPTION, tvDescription.getText());
                 String productId= product.getProductId();
 
-                //Log.e(TAG, "onProductViewHolderClick: ",productId);
                 try {
-                    //final String childProductId = mDatabaseReference.getRef().child("Product").getKey();
-                    //childProductId=firebaseRecyclerAdapter.getRef(position).child("Product").getKey();
-                    System.out.print(product.getName() + product.getPrice() + product.getDescription() + productId);
+                        System.out.print(product.getName() + product.getPrice() + product.getDescription() + productId);
                     intent.putExtra(Constants.EXTRA_PRODUCTID, productId);
 
                 }

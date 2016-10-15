@@ -53,6 +53,7 @@ public class BidProductActivity extends AppCompatActivity {
 
     @AfterViews
     void setTextViews(){
+
         Intent intent=getIntent();
         String productName=intent.getStringExtra(Constants.EXTRA_NAME);
         String price=intent.getStringExtra(Constants.EXTRA_PRICE);

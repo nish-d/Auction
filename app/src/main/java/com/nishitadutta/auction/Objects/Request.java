@@ -27,8 +27,9 @@ public class Request {
         return requestId;
     }
 
-    public void setRequestId(String requestId) {
+    public String setRequestId(String requestId) {
         this.requestId = requestId;
+        return this.requestId;
     }
 
     private Map<String, Object> map;
@@ -55,8 +56,9 @@ public class Request {
         return userID;
     }
 
-    public void setProductId(String productId) {
+    public String setProductId(String productId) {
         this.productId = productId;
+        return productId;
     }
 
     public void setPrice(float price) {
