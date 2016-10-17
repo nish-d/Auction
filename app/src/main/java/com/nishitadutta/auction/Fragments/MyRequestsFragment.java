@@ -49,7 +49,7 @@ public class MyRequestsFragment extends Fragment {
             }
 
         };
-        recyclerViewProducts.setAdapter(firebaseRecyclerAdapter);
+         recyclerViewProducts.setAdapter(firebaseRecyclerAdapter);
         recyclerViewProducts.setLayoutManager(new LinearLayoutManager(getContext()));
         Log.d(TAG, "setView: " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
     }

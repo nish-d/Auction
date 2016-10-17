@@ -99,6 +99,7 @@ public class SignupActivity extends AppCompatActivity {
 
                         } else {
                             FirebaseManager.addUser(name, phone);
+
                             goToMain();
                             //TODO: hide progress bar
                         }
