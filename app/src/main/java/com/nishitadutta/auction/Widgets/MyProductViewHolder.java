@@ -3,6 +3,7 @@ package com.nishitadutta.auction.Widgets;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.nishitadutta.auction.Activities.CountOfRequestsActivity;
@@ -27,8 +28,8 @@ public class MyProductViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.tv_description_myproduct)
     TextView tvDescription;
 
-    @BindView(R.id.tv_count_of_bidders)
-    TextView tvBiddersCount;
+    @BindView(R.id.btn_no_of_request)
+    Button btRequest;
 
     public MyProductViewHolder(View itemView) {
         super(itemView);
@@ -44,7 +45,7 @@ public class MyProductViewHolder extends RecyclerView.ViewHolder {
         final float price=product.getPrice();
 
 
-        tvBiddersCount.setOnClickListener(new View.OnClickListener() {
+        btRequest.setOnClickListener(new View.OnClickListener() {
             public static final String TAG = "onMyProductViewHolderClick";
 
             @Override
@@ -53,8 +54,8 @@ public class MyProductViewHolder extends RecyclerView.ViewHolder {
                 Intent intent = new Intent(v.getContext(), CountOfRequestsActivity.class);
                 String id= product.getProductId();
                 intent.putExtra(Constants.EXTRA_PRODUCTID, id);
-                intent.putExtra(Constants.EXTRA_NAME, productName);
-                intent.putExtra(Constants.EXTRA_PRICE, price);
+                intent.putExtra(Constants.EXTRA_NAME, tvProductName.getText());
+                intent.putExtra(Constants.EXTRA_PRICE, tvPrice.getText());
                 v.getContext().startActivity(intent);
             }
         });

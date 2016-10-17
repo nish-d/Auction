@@ -31,6 +31,8 @@ public class FirebaseManager {
     public static final String TABLE_PRODUCT = "Product";
     public static final String TABLE_USER = "User";
     public static final String TABLE_REQUEST = "Request";
+    public static final String COLUMN_REQUEST="request";
+
     public final static DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
     public static final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     public static ToastManager toastManager = ToastManager_.getInstance_(MyApplication_.getInstance());
@@ -62,9 +64,10 @@ public class FirebaseManager {
             }
         });
         request.setRequestId(ref.getKey());
-       /* ref = databaseReference.child(TABLE_USER).child(firebaseUser.getUid())
-                .child("products").child(product.getProductId());
-        ref.setValue("true");*/
+
+        ref = databaseReference.child(TABLE_USER).child(firebaseUser.getUid())
+                .child(COLUMN_REQUEST).child(request.getRequestId());
+        ref.setValue("true");
     }
 
     public static void addUser(String userName, String phone) {

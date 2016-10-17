@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp">
+    android:padding="10dp">
 
 
     <TextView
@@ -74,37 +74,27 @@
         android:orientation="vertical"
         >
 
-    <TextView
-        android:id="@+id/tv_display_no_of_bidders"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No. of Requests"
-        android:layout_margin="10dp"
-        android:backgroundTint="@color/colorAccent"
-        />
-
-        <TextView
-            android:id="@+id/tv_count_of_bidders"
-            android:layout_width="wrap_content"
-            android:layout_margin="10dp"
-            android:textSize="18dp"
-            android:textColor="@color/colorAccent"
-            android:layout_gravity="center"
+        <FrameLayout
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="2"/>
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorAccent"
+            android:layout_margin="10dp">
+
+            <Button
+                android:id="@+id/btn_no_of_request"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:shadowColor="@android:color/transparent"
+                android:text="Request"
+                android:textColor="@color/white"/>
+        </FrameLayout>
+
     </LinearLayout>
-
-    <!--Button
-        android:id="@+id/btn_request"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_margin="5dp"
-        android:text="PUT BID"
-        android:background="@color/colorAccent"/>-->
-    <!--android:onClick="onRequest"/>-->
-
-    <View
+<View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_margin="2dp"

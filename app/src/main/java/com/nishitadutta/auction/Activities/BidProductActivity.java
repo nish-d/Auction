@@ -82,9 +82,4 @@ public class BidProductActivity extends AppCompatActivity {
 
     }
 
-
-    public void onSubmit(View view)
-    {
-        Toast.makeText(this, "Request Button Clicked", Toast.LENGTH_LONG).show();
-    }
 }

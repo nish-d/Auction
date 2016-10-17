@@ -39,16 +39,16 @@ public class CountOfRequestsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_count_of_requests);
         RecyclerView recyclerViewProducts= (RecyclerView) findViewById(R.id.recycler_count_of_requests);
-        final TextView tvProductName= (TextView) findViewById(R.id.tv_product_name);
+        final TextView tvProductName= (TextView) findViewById(R.id.tv_product_name_count);
         final TextView tvPrice= (TextView) findViewById(R.id.tv_price_count);
 
         Intent intent=getIntent();
         final String productId= intent.getStringExtra(Constants.EXTRA_PRODUCTID);
-        final String producName=intent.getStringExtra(Constants.EXTRA_NAME);
+        final String productName=intent.getStringExtra(Constants.EXTRA_NAME);
         final String price= intent.getStringExtra(Constants.EXTRA_PRICE);
 
-        //tvProductName.setText(producName);
-        //tvPrice.setText(price);
+        tvProductName.setText(productName);
+        tvPrice.setText(price);
         Log.e(TAG, "EXTRA PRODUCTID "+productId );
 
         final DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
