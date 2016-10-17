@@ -27,6 +27,7 @@ import com.nishitadutta.auction.Fragments.AllProductsFragment_;
 import com.nishitadutta.auction.Fragments.MyProductsFragment_;
 import com.nishitadutta.auction.Fragments.MyProfileFragment_;
 import com.nishitadutta.auction.Fragments.MyRequestsFragment;
+import com.nishitadutta.auction.Fragments.MyRequestsFragment_;
 import com.nishitadutta.auction.R;
 
 import org.androidannotations.annotations.ViewById;
@@ -123,12 +124,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_all_products) {
             fragment=new AllProductsFragment_();
-        } else if (id == R.id.nav_my_requests) {
-
         } else if (id == R.id.nav_my_profile) {
             fragment=new MyProfileFragment_();
         } else if(id==R.id.nav_my_requests){
-            //fragment= new MyRequestsFragment_();
+            fragment= new MyRequestsFragment_();
         } else if (id == R.id.nav_send) {
 
         }
