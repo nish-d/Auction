@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.nishitadutta.auction.Activities.LoginActivity;
 import com.nishitadutta.auction.Fragments.AddProductFragment_;
 import com.nishitadutta.auction.Fragments.AllProductsFragment;
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     Fragment fragment;
-
+    static boolean calledAlready;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +46,10 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
+        if (!calledAlready) {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+            calledAlready = true;
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

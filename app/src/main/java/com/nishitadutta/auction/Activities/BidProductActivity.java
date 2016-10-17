@@ -3,6 +3,7 @@ package com.nishitadutta.auction.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +28,7 @@ import butterknife.BindView;
 @EActivity(R.layout.activity_bid_product)
 public class BidProductActivity extends AppCompatActivity {
 
+    private static final String TAG="BidProductActivity";
     DatabaseReference mDatabaseReference;
     String productId;
     Request request;
@@ -46,9 +48,10 @@ public class BidProductActivity extends AppCompatActivity {
 
     @Click(R.id.btn_submit)
     void addRequest(){
-
+        Log.e(TAG, "addRequest: " );
         request=new Request(Float.parseFloat(etBidPrice.getText().toString()),productId);
-        FirebaseManager.addRequest(request, getApplicationContext());
+        Log.e(TAG, "addRequest: " + request.toString() );
+        FirebaseManager.addRequest(request);
     }
 
     @AfterViews

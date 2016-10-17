@@ -28,7 +28,7 @@ public class MyRequestsFragment extends Fragment {
 
 
     public static final String TAG = "MyProductsFragment";
-    @ViewById(R.id.recycler_view_products)
+    @ViewById(R.id.recycler_view_my_requests)
     RecyclerView recyclerViewProducts;
 
     DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
@@ -49,7 +49,7 @@ public class MyRequestsFragment extends Fragment {
             }
 
         };
-         recyclerViewProducts.setAdapter(firebaseRecyclerAdapter);
+        recyclerViewProducts.setAdapter(firebaseRecyclerAdapter);
         recyclerViewProducts.setLayoutManager(new LinearLayoutManager(getContext()));
         Log.d(TAG, "setView: " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
     }

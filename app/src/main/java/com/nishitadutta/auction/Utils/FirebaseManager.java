@@ -36,14 +36,12 @@ public class FirebaseManager {
     public static final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     public static ToastManager toastManager = ToastManager_.getInstance_(MyApplication_.getInstance());
 
-    public static void addProduct(final Product product, final Context context) {
+    public static void addProduct(final Product product) {
         DatabaseReference ref;
         ref = databaseReference.child(TABLE_PRODUCT).push();
         ref.setValue(product.getMap()).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-
-                //Toast.makeText(context, "Your product has been added succesfully", Toast.LENGTH_SHORT).show();
                 toastManager.show("Your product has been added succesfully");
             }
         });
@@ -56,7 +54,7 @@ public class FirebaseManager {
         ref.setValue("true");
     }
 
-    public static void addRequest(Request request, final Context context) {
+    public static void addRequest(Request request) {
 
 
         DatabaseReference ref;
@@ -75,7 +73,7 @@ public class FirebaseManager {
 
         ref=databaseReference.child(TABLE_PRODUCT)
                 .child(request.getProductId())
-                .child(COLUMN_REQUESTS);
+                .child(COLUMN_REQUEST);
         ref.child(request.getRequestId()).setValue("true");
 
 

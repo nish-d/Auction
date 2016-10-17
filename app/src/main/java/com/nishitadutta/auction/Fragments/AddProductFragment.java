@@ -44,7 +44,7 @@ public class AddProductFragment extends Fragment {
         product=new Product(productDescription.getText().toString(),
                 productName.getText().toString(),
                 Float.parseFloat(productPrice.getText().toString()));
-        FirebaseManager.addProduct(product, getContext());
+        FirebaseManager.addProduct(product);
     }
 
     @Nullable

@@ -74,8 +74,9 @@ public class Request {
 
         String userId= FirebaseAuth.getInstance().getCurrentUser().getUid();
         //String userName=FirebaseAuth.getInstance().getCurrentUser().getDisplayName();
-
+        this.productId=productIdRequest;
         Price = price;
+        this.userID=userId;
         map=new HashMap<String, Object>();
 
         map.put(COLUMN_PRODUCTID, productIdRequest);
