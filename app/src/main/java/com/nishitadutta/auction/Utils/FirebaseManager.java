@@ -67,15 +67,11 @@ public class FirebaseManager {
             }
         });
         request.setRequestId(ref.getKey());
-       /* ref = databaseReference.child(TABLE_USER).child(firebaseUser.getUid())
-                .child("products").child(product.getProductId());
-        ref.setValue("true");*/
 
         ref=databaseReference.child(TABLE_PRODUCT)
                 .child(request.getProductId())
                 .child(COLUMN_REQUEST);
         ref.child(request.getRequestId()).setValue("true");
-
 
 
         ref = databaseReference.child(TABLE_USER).child(firebaseUser.getUid())

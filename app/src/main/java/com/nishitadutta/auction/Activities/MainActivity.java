@@ -1,6 +1,7 @@
 package com.nishitadutta.auction.Activities;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity
             finish();
         }
         else{
+
             Log.e(this.getLocalClassName(), "logged in");
 
         }

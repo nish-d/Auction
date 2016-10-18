@@ -16,6 +16,7 @@ public class Product {
     public final static String COLUMN_PRICE="Price";
     public final static String COLUMN_USERID="SellerId";
     public final static String COLUMN_USERNAME="SellerName";
+    public final static String COLUMN_REQUEST="request";
 
     private String productId;
     private String Description;

@@ -86,10 +86,11 @@
                 android:id="@+id/btn_no_of_request"
                 style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="match_parent"
+                android:padding="5dp"
                 android:layout_height="wrap_content"
                 android:background="?android:attr/selectableItemBackground"
                 android:shadowColor="@android:color/transparent"
-                android:text="Request"
+                android:text="View Request"
                 android:textColor="@color/white"/>
         </FrameLayout>
 

@@ -61,7 +61,6 @@
         android:background="@color/divider"/>
 
 
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_count_of_requests"
         android:layout_width="match_parent"

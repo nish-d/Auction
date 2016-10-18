@@ -14,4 +14,6 @@ public class Constants {
     public static final String EXTRA_PRODUCTID="ProductId";
     public static final String SHAREDPREFERENCE="profile_picture";
 
+    public static final String SHAREDPREFERENCEPHONE="userPhone";
+
 }

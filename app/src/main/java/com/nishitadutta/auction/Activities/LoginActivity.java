@@ -1,13 +1,17 @@
 package com.nishitadutta.auction.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,10 +31,16 @@ import org.androidannotations.annotations.ViewById;
 public class LoginActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
+
+    @ViewById(R.id.progress_bar_login)
+    ProgressBar progressBarLogin;
+
     @ViewById(R.id.et_email)
     EditText usernameEt;
+
     @ViewById(R.id.et_password)
     EditText passwordEt;
+
     @ViewById(R.id.btn_login)
     Button btnLogin;
     ToastManager toastManager = ToastManager_.getInstance_(MyApplication_.getInstance());
@@ -40,9 +50,12 @@ public class LoginActivity extends AppCompatActivity {
 
     @Click(R.id.btn_login)
     void setBtnLogin() {
+        btnLogin.setText("");
+        progressBarLogin.setVisibility(View.VISIBLE);
         email = usernameEt.getText().toString();
         password = passwordEt.getText().toString();
 
+        if(!(email.equals("")&&password.equals("")))
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -52,7 +65,10 @@ public class LoginActivity extends AppCompatActivity {
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
                         // signed in user can be handled in the listener.
+
                         if (!task.isSuccessful()) {
+                            btnLogin.setText("Login");
+                            progressBarLogin.setVisibility(View.INVISIBLE);
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
                             toastManager.show("Authentication failed");
                         }
@@ -60,6 +76,12 @@ public class LoginActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+
+        else{
+            btnLogin.setText("Login");
+            progressBarLogin.setVisibility(View.INVISIBLE);
+            Toast.makeText(this,"Please enter all the details!", Toast.LENGTH_LONG).show();
+        }
 
     }
 
@@ -87,6 +109,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void goToMain() {
+
+        btnLogin.setText("Login");
+        progressBarLogin.setVisibility(View.INVISIBLE);
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         finish();

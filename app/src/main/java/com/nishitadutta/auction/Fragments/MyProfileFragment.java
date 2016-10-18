@@ -33,6 +33,7 @@ import com.mvc.imagepicker.ImagePicker;
 import com.nishitadutta.auction.Custom.Constants;
 import com.nishitadutta.auction.R;
 import com.nishitadutta.auction.Utils.FirebaseManager;
+import com.nishitadutta.auction.Utils.SharedPreferenceUtils;
 import com.nishitadutta.auction.Utils.ToastManager;
 import com.nishitadutta.auction.Utils.ToastManager_;
 
@@ -61,7 +62,7 @@ public class MyProfileFragment extends Fragment {
 
 
     @ViewById(R.id.et_phone_profile)
-    public EditText etPhoneProfile;
+    EditText etPhoneProfile;
     @ViewById(R.id.profile_pic)
     ImageView profilePic;
     @ViewById(R.id.et_username_profile)
@@ -134,6 +135,13 @@ public class MyProfileFragment extends Fragment {
         etEmailProfile.setEnabled(false);
         etEmailProfile.setFocusable(false);
         getPhone();
+
+        SharedPreferenceUtils sharedPreferenceUtils=SharedPreferenceUtils.getInstance(getContext());
+
+        etPhoneProfile.setText(sharedPreferenceUtils.getStringValue(Constants.SHAREDPREFERENCEPHONE));
+        etPhoneProfile.setEnabled(false);
+        etPhoneProfile.setFocusable(false);
+
         if (firebaseUser.getPhotoUrl() != null) {
             profilePic.setImageURI(firebaseUser.getPhotoUrl());
         }
