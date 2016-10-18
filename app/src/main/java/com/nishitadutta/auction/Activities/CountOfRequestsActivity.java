@@ -76,20 +76,6 @@ public class CountOfRequestsActivity extends AppCompatActivity {
                             final DatabaseReference requestRef = mRef.child(FirebaseManager.TABLE_REQUEST)
                                     .child(requestId);
                             requestKeys.add(requestId);
-                           /* requestRef.addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-                                    Log.e(TAG, "onDataChange: " + dataSnapshot.toString());
-                                    Request request = dataSnapshot.getValue(Request.class);
-                                    request.setRequestId(dataSnapshot.getKey());
-                                    Log.e(TAG, "onDataChange: " + request.getUserID() + request.getBidPrice());
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-
-                                }
-                            });*/
 
                             Log.e(TAG, "onDataChange: RequestId: " + requestId);
                         }

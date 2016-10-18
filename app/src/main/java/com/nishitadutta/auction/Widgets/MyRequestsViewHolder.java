@@ -2,6 +2,7 @@ package com.nishitadutta.auction.Widgets;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import butterknife.ButterKnife;
  */
 public class MyRequestsViewHolder extends RecyclerView.ViewHolder {
 
+    private static final String TAG ="Product Values" ;
     @BindView(R.id.tv_name_myRequest)
     TextView tvProductName;
 
@@ -37,6 +39,8 @@ public class MyRequestsViewHolder extends RecyclerView.ViewHolder {
 
     public void setAttributes(final Product product){
 
+        Log.e(TAG, "setAttributes: "+product.getProductId()+product.getName()+
+                product.getPrice()+product.getDescription() );
         tvProductName.setText(product.getName());
         tvPrice.setText(String.valueOf(product.getPrice()));
         tvDescription.setText(product.getDescription());

@@ -5,32 +5,17 @@
     android:padding="10dp">
 
 
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_margin="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name: "
-        android:textStyle="bold"/>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_name_myRequest"
         android:text="Name"
+        android:textSize="@dimen/heading_font_size"
         android:layout_margin="5dp"
-        android:layout_toRightOf="@id/tv_name"
         android:layout_weight="1"
         />
-
-    <TextView
-        android:id="@+id/tv_product_price"
-        android:layout_margin="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Price: "
-        android:textStyle="bold"
-        android:layout_below="@id/tv_name"/>
 
 
     <TextView
@@ -39,27 +24,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price"
-        android:layout_below="@id/tv_name"
-        android:layout_toRightOf="@id/tv_product_price"
+        android:textSize="@dimen/heading_font_size"
+        android:layout_below="@id/tv_name_myRequest"
         android:layout_gravity="center"
         android:layout_weight="1"/>
 
-    <TextView
-        android:id="@+id/tv_product_description"
-        android:layout_width="wrap_content"
-        android:layout_margin="5dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_product_price"
-        android:textStyle="bold"
-        android:text="Description: "/>
 
     <TextView
         android:id="@+id/tv_description_myRequest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:layout_below="@id/tv_product_price"
-        android:layout_toRightOf="@id/tv_product_description"
+        android:textSize="@dimen/heading_font_size"
+        android:layout_below="@id/tv_price_myRequest"
         android:text="Description"/>
 
     <TextView
@@ -69,18 +46,23 @@
         android:text="My bid Price: "
         android:layout_marginLeft="50dp"
         android:layout_margin="5dp"
+        android:layout_alignParentRight="true"
         android:textSize="15dp"
         android:textStyle="bold"
-        android:layout_toRightOf="@id/tv_name_myRequest"/>
+        android:layout_marginRight="40dp"/>
 
 
     <TextView
         android:id="@+id/tv_bid_price_myRequest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/tv_bidPrice_display"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="50dp"
+        android:layout_below="@id/tv_bidPrice_display"
         android:layout_margin="5dp"
+        android:textSize="@dimen/heading_font_size"
         android:text="My Bid Price"/>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

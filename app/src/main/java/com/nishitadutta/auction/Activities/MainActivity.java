@@ -131,10 +131,6 @@ public class MainActivity extends AppCompatActivity
             fragment=new AllProductsFragment_();
         } else if (id == R.id.nav_my_profile) {
             fragment=new MyProfileFragment_();
-        } else if(id==R.id.nav_my_requests){
-            fragment= new MyRequestsFragment_();
-        } else if (id == R.id.nav_send) {
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
