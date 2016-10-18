@@ -68,7 +68,7 @@ public class Product {
         Name = name;
     }
 
-  /*  public String getPrice() {
+  /*  public String getBidPrice() {
         return Price;
     }*/
 
@@ -76,7 +76,7 @@ public class Product {
       return Price;
   }
 
-  /*  public void setPrice(String price){
+  /*  public void setBidPrice(String price){
         Price = price;
     }*/
   public void setPrice(float price) {

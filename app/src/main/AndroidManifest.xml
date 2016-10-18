@@ -25,7 +25,7 @@
         <activity android:name=".Activities.LoginActivity_" />
         <activity android:name=".Activities.SignupActivity_" />
         <activity android:name=".Activities.BidProductActivity_"></activity>
-        <activity android:name=".Activities.CountOfRequestsActivity"></activity>
+        <activity android:name=".Activities.CountOfRequestsActivity_"></activity>
     </application>
 
 </manifest>

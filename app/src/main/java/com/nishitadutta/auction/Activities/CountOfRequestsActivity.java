@@ -2,102 +2,125 @@ package com.nishitadutta.auction.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
-import com.google.firebase.database.ValueEventListener;
-import com.nishitadutta.auction.Global.MyApplication_;
-import com.nishitadutta.auction.Objects.Request;
-import com.nishitadutta.auction.Utils.ToastManager_;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.nishitadutta.auction.Custom.Constants;
-import com.nishitadutta.auction.Objects.Product;
+import com.nishitadutta.auction.Objects.Request;
 import com.nishitadutta.auction.R;
+import com.nishitadutta.auction.Utils.FirebaseManager;
 import com.nishitadutta.auction.Widgets.CountofRequestsViewHolder;
-import com.nishitadutta.auction.Widgets.ProductViewHolder;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import butterknife.BindView;
+import java.util.ArrayList;
 
+@EActivity(R.layout.activity_count_of_requests)
 public class CountOfRequestsActivity extends AppCompatActivity {
 
-
     public static final String TAG = "CountOfRequestsActivity";
-    public static final String TABLE_PRODUCT="Product";
-    public static final String COLUMN_REQUEST="request";
-    public static final String TABLE_REQUEST="Request";
+    public static final String TABLE_PRODUCT = "Product";
+    public static final String COLUMN_REQUEST = "request";
+    public static final String TABLE_REQUEST = "Request";
+    @ViewById(R.id.recycler_count_of_requests)
+    RecyclerView recyclerViewProducts;
+    @ViewById(R.id.tv_product_name_count)
+    TextView tvProductName;
+    @ViewById(R.id.tv_price_count)
+    TextView tvPrice;
+    String productId, productName, price;
+    @ViewById(R.id.toolbar_c_o_r)
+    Toolbar toolbar;
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_count_of_requests);
-        RecyclerView recyclerViewProducts= (RecyclerView) findViewById(R.id.recycler_count_of_requests);
-        final TextView tvProductName= (TextView) findViewById(R.id.tv_product_name_count);
-        final TextView tvPrice= (TextView) findViewById(R.id.tv_price_count);
-
-        Intent intent=getIntent();
-        final String productId= intent.getStringExtra(Constants.EXTRA_PRODUCTID);
-        final String productName=intent.getStringExtra(Constants.EXTRA_NAME);
-        final String price= intent.getStringExtra(Constants.EXTRA_PRICE);
-
+    @AfterViews
+    void setLayout() {
+        Intent intent = getIntent();
+        productId = intent.getStringExtra(Constants.EXTRA_PRODUCTID);
+        productName = intent.getStringExtra(Constants.EXTRA_NAME);
+        price = intent.getStringExtra(Constants.EXTRA_PRICE);
 
         tvProductName.setText(productName);
         tvPrice.setText(price);
-        Log.e(TAG, "EXTRA PRODUCTID "+productId );
-
+        toolbar.setNavigationIcon(R.drawable.ic_action_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         final DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
+        final ArrayList<String> requestKeys = new ArrayList<>();
 
-        //final Query query = mRef.child("Request").orderByChild("productId").equalTo(productId);
-        mRef.child(TABLE_PRODUCT)
+        mRef.child(FirebaseManager.TABLE_PRODUCT)
                 .child(productId)
-                .child(COLUMN_REQUEST)
-                .addChildEventListener(new ChildEventListener() {
+                .child(FirebaseManager.COLUMN_REQUEST)
+                .addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot data : dataSnapshot.getChildren()) {
+                            final String requestId = data.getKey();
+                            //requestId = requestId.replace("=true", "");
+                            final DatabaseReference requestRef = mRef.child(FirebaseManager.TABLE_REQUEST)
+                                    .child(requestId);
+                            requestKeys.add(requestId);
+                           /* requestRef.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    Log.e(TAG, "onDataChange: " + dataSnapshot.toString());
+                                    Request request = dataSnapshot.getValue(Request.class);
+                                    request.setRequestId(dataSnapshot.getKey());
+                                    Log.e(TAG, "onDataChange: " + request.getUserID() + request.getBidPrice());
+                                }
 
-                        String key = dataSnapshot.getKey();
-                        Log.e(TAG, "onChildAdded: " + key);
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
 
-                        mRef.child(TABLE_REQUEST).child(key).child("bidPrice").addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                float bidPrice = (float) dataSnapshot.getValue();
-                                Log.e(TAG, "BidPrice: " + bidPrice);
-                            }
+                                }
+                            });*/
 
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
+                            Log.e(TAG, "onDataChange: RequestId: " + requestId);
+                        }
 
-                            }
-                        });
-                    }
+                        Query query = mRef.child(TABLE_REQUEST);
 
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                        FirebaseRecyclerAdapter firebaseRecyclerAdapter =
+                                new FirebaseRecyclerAdapter<Request, CountofRequestsViewHolder>
+                                        (Request.class, R.layout.list_item_count_of_requests,
+                                                CountofRequestsViewHolder.class, query) {
 
-                    }
+                                    @Override
+                                    protected Request parseSnapshot(DataSnapshot snapshot) {
+                                        Log.e(TAG, "parseSnapshot: " + snapshot.toString());
+                                        if (requestKeys.indexOf(snapshot.getKey()) != -1)
+                                            return snapshot.getValue(Request.class);
+                                            // return super.parseSnapshot(snapshot);
+                                        else
+                                            return null;
+                                    }
 
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+                                    @Override
+                                    protected void populateViewHolder(CountofRequestsViewHolder viewHolder, Request model, int position) {
+                                        // model.setRequestId(this.getRef(position).getKey());
 
-                    }
+                                        viewHolder.setAttributes(model);
+                                    }
+                                };
 
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
+                        recyclerViewProducts.setAdapter(firebaseRecyclerAdapter);
+                        recyclerViewProducts.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     }
 
                     @Override
@@ -105,28 +128,6 @@ public class CountOfRequestsActivity extends AppCompatActivity {
 
                     }
                 });
-
-
-
-            final FirebaseRecyclerAdapter firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Request, CountofRequestsViewHolder>
-                    (Request.class, R.layout.list_item_count_of_requests, CountofRequestsViewHolder.class,
-                            mRef.getRef()) {
-
-                @Override
-                protected void populateViewHolder(CountofRequestsViewHolder viewHolder, Request model, int position) {
-                    // id =this.getRef(position).getKey();
-
-                    float bidPrice=1;
-                    model.setProductId(productId);
-                    model.setPrice(bidPrice);
-                    Log.e(TAG, "countofRequestsViewHolder" + productId+" " + bidPrice);
-                    viewHolder.setAttributes(model);
-                }
-            };
-            recyclerViewProducts.setAdapter(firebaseRecyclerAdapter);
-            recyclerViewProducts.setLayoutManager(new LinearLayoutManager(this));
-            Log.d(TAG, "setView: " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-
 
     }
 }

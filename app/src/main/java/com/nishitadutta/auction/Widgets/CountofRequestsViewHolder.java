@@ -1,12 +1,11 @@
 package com.nishitadutta.auction.Widgets;
 
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.nishitadutta.auction.Activities.CountOfRequestsActivity;
-import com.nishitadutta.auction.Objects.Product;
 import com.nishitadutta.auction.Objects.Request;
 import com.nishitadutta.auction.R;
 
@@ -19,19 +18,29 @@ import butterknife.ButterKnife;
 
 public class CountofRequestsViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.tv_price_product_request)
+    @BindView(R.id.tv_bid_price)
     TextView tvPrice;
+    @BindView(R.id.tv_username)
+    TextView tvUsername;
+    String TAG="CntOfReqViewHolder";
 
-
+    @BindView(R.id.view_divider)
+    View vDivider;
     public CountofRequestsViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
     }
 
-    public void setAttributes(final Request request){
-
-        //tvPrice.setText(String.valueOf(request.getPrice()));
-        tvPrice.setText("1");
-
+    public void setAttributes(final Request request) {
+        if (request == null) {
+            tvUsername.setVisibility(View.GONE);
+            tvPrice.setVisibility(View.GONE);
+            vDivider.setVisibility(View.GONE);
+        } else {
+            tvPrice.setText(String.valueOf(request.getBidPrice()));
+            tvUsername.setText(request.getUserName());
+            Log.e(TAG, "setAttributes: " + request.getBidPrice() + request.getUserName() );
+            //tvPrice.setText(request.getBidPrice());
+        }
     }
 }
