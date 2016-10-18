@@ -3,6 +3,7 @@ package com.nishitadutta.auction.Activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -44,7 +45,8 @@ public class BidProductActivity extends AppCompatActivity {
 
     @ViewById(R.id.et_bid_price)
     EditText etBidPrice;
-
+@ViewById(R.id.toolbar_bid_product)
+    Toolbar toolbar;
 
     @Click(R.id.btn_submit)
     void addRequest(){
@@ -62,11 +64,17 @@ public class BidProductActivity extends AppCompatActivity {
         String price=intent.getStringExtra(Constants.EXTRA_PRICE);
         String description= intent.getStringExtra(Constants.EXTRA_DESCRIPTION);
         productId= intent.getStringExtra(Constants.EXTRA_PRODUCTID);
-
+        toolbar.setTitle("");
         tvProductNameRequest.setText(productName);
         tvPriceRequest.setText(price);
         tvDescriptionRequest.setText(description);
-
+        toolbar.setNavigationIcon(R.drawable.ic_action_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         //Toast.makeText(this, productName+price+description+productId, Toast.LENGTH_LONG).show();
     }
     @Override

@@ -55,6 +55,7 @@ public class CountOfRequestsActivity extends AppCompatActivity {
         tvProductName.setText(productName);
         tvPrice.setText(price);
         toolbar.setNavigationIcon(R.drawable.ic_action_back);
+        toolbar.setTitle("Requests on " + productName);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

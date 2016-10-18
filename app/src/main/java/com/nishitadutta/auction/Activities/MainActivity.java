@@ -71,6 +71,9 @@ public class MainActivity extends AppCompatActivity
         else{
 
             Log.e(this.getLocalClassName(), "logged in");
+            fragment= new AllProductsFragment_();
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, fragment).commit();
 
         }
 
