@@ -14,9 +14,12 @@ import android.widget.EditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com.nishitadutta.auction.Global.MyApplication_;
 import com.nishitadutta.auction.Objects.Product;
 import com.nishitadutta.auction.R;
 import com.nishitadutta.auction.Utils.FirebaseManager;
+import com.nishitadutta.auction.Utils.ToastManager;
+import com.nishitadutta.auction.Utils.ToastManager_;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.androidannotations.annotations.Click;
@@ -43,9 +46,14 @@ public class AddProductFragment extends Fragment {
 
     @Click(R.id.button_add)
     void addProduct() {
-        product=new Product(productDescription.getText().toString(),
+        if(!(productName.getText().equals("")&&productDescription.getText().equals("")&&productPrice.equals("")))
+            product=new Product(productDescription.getText().toString(),
                 productName.getText().toString(),
                 Float.parseFloat(productPrice.getText().toString()));
+        else {
+            ToastManager toastManager = ToastManager_.getInstance_(MyApplication_.getInstance());
+            toastManager.show("Please enter all the values");
+        }
         FirebaseManager.addProduct(product);
     }
 
