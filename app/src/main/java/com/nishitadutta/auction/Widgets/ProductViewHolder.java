@@ -1,22 +1,14 @@
 package com.nishitadutta.auction.Widgets;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.google.firebase.database.DatabaseReference;
+//import com.nishitadutta.auction.Activities.BidProductActivity_;
 import com.nishitadutta.auction.Activities.BidProductActivity;
-import com.nishitadutta.auction.Activities.BidProductActivity_;
-import com.nishitadutta.auction.Activities.MainActivity;
 import com.nishitadutta.auction.Custom.Constants;
-import com.nishitadutta.auction.Fragments.AllProductsFragment;
 import com.nishitadutta.auction.Objects.Product;
 import com.nishitadutta.auction.R;
 
@@ -60,7 +52,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
 
-                Intent intent=new Intent(v.getContext(), BidProductActivity_.class);
+                Intent intent=new Intent(v.getContext(), BidProductActivity.class);
                 intent.putExtra(Constants.EXTRA_NAME, tvProductName.getText());
                 intent.putExtra(Constants.EXTRA_PRICE, tvPrice.getText());
                 intent.putExtra(Constants.EXTRA_DESCRIPTION, tvDescription.getText());

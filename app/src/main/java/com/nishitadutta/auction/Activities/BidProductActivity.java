@@ -1,19 +1,16 @@
 package com.nishitadutta.auction.Activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.nishitadutta.auction.Objects.Product;
 import com.nishitadutta.auction.Objects.Request;
 import com.nishitadutta.auction.Utils.FirebaseManager;
 import com.nishitadutta.auction.Custom.Constants;
@@ -23,8 +20,6 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
-
-import butterknife.BindView;
 
 @EActivity(R.layout.activity_bid_product)
 public class BidProductActivity extends AppCompatActivity {

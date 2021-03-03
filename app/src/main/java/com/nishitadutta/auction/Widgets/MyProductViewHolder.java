@@ -1,13 +1,13 @@
 package com.nishitadutta.auction.Widgets;
 
 import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+//import com.nishitadutta.auction.Activities.CountOfRequestsActivity_;
 import com.nishitadutta.auction.Activities.CountOfRequestsActivity;
-import com.nishitadutta.auction.Activities.CountOfRequestsActivity_;
 import com.nishitadutta.auction.Custom.Constants;
 import com.nishitadutta.auction.Objects.Product;
 import com.nishitadutta.auction.R;
@@ -52,7 +52,7 @@ public class MyProductViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(v.getContext(),CountOfRequestsActivity_.class);
+                Intent intent = new Intent(v.getContext(), CountOfRequestsActivity.class);
                 String id= product.getProductId();
                 intent.putExtra(Constants.EXTRA_PRODUCTID, id);
                 intent.putExtra(Constants.EXTRA_NAME, tvProductName.getText());

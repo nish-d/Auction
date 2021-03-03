@@ -1,21 +1,14 @@
 package com.nishitadutta.auction.Fragments;
 
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.TextView;
-
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.nishitadutta.auction.Activities.BidProductActivity;
-import com.nishitadutta.auction.Custom.Constants;
 import com.nishitadutta.auction.Objects.Product;
 import com.nishitadutta.auction.R;
 import com.nishitadutta.auction.Widgets.ProductViewHolder;

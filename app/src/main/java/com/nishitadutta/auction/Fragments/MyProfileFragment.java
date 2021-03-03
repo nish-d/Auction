@@ -6,15 +6,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Camera;
-import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
+import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.util.Base64;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,7 +25,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 import com.nishitadutta.auction.Global.MyApplication_;
 import com.nishitadutta.auction.Objects.User;
-import com.mvc.imagepicker.ImagePicker;
 import com.nishitadutta.auction.Custom.Constants;
 import com.nishitadutta.auction.R;
 import com.nishitadutta.auction.Utils.FirebaseManager;
@@ -74,7 +69,7 @@ public class MyProfileFragment extends Fragment {
 
     Boolean editMode = false;
     //firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-    ToastManager toastManager = ToastManager_.getInstance_(MyApplication_.getInstance());
+    //ToastManager toastManager = ToastManager_.getInstance_(MyApplication_.getInstance());
 
     public void getPhone() {
         DatabaseReference databaseReference = FirebaseManager.databaseReference;
@@ -158,7 +153,7 @@ public class MyProfileFragment extends Fragment {
             editMode = false;
 
             if (phone.equals("") || userName.equals("")) {
-                toastManager.show("Phone or UserName cannot be left empty");
+                //toastManager.show("Phone or UserName cannot be left empty");
                 toggleEditable(true);       //everything should be enabled
             } else {
                 btnEdit.setText("Edit");

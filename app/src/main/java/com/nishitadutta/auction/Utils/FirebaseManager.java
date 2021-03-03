@@ -1,7 +1,6 @@
 package com.nishitadutta.auction.Utils;
 
-import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 import android.widget.EditText;
 

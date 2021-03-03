@@ -1,11 +1,9 @@
 package com.nishitadutta.auction.Fragments;
 
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputEditText;
-import android.support.v4.app.Fragment;
-import android.util.Log;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +18,6 @@ import com.nishitadutta.auction.R;
 import com.nishitadutta.auction.Utils.FirebaseManager;
 import com.nishitadutta.auction.Utils.ToastManager;
 import com.nishitadutta.auction.Utils.ToastManager_;
-import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;

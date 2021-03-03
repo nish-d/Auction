@@ -1,38 +1,27 @@
 package com.nishitadutta.auction.Activities;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.v4.app.Fragment;
+
+import androidx.fragment.app.Fragment;
 import android.util.Log;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
-import com.nishitadutta.auction.Activities.LoginActivity;
 import com.nishitadutta.auction.Fragments.AddProductFragment_;
-import com.nishitadutta.auction.Fragments.AllProductsFragment;
 import com.nishitadutta.auction.Fragments.AllProductsFragment_;
 import com.nishitadutta.auction.Fragments.MyProductsFragment_;
 import com.nishitadutta.auction.Fragments.MyProfileFragment_;
-import com.nishitadutta.auction.Fragments.MyRequestsFragment;
 import com.nishitadutta.auction.Fragments.MyRequestsFragment_;
 import com.nishitadutta.auction.R;
-
-import org.androidannotations.annotations.ViewById;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -62,18 +51,18 @@ public class MainActivity extends AppCompatActivity
 
         if(auth.getCurrentUser()==null) {
 
-            Log.e(this.getLocalClassName(), "Not logged in");
+            /*Log.e(this.getLocalClassName(), "Not logged in");
             Intent in = new Intent(this, LoginActivity_.class);
             startActivity(in);
 
-            finish();
+            finish();*/
         }
         else{
 
-            Log.e(this.getLocalClassName(), "logged in");
+            /*Log.e(this.getLocalClassName(), "logged in");
             fragment= new AllProductsFragment_();
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, fragment).commit();
+                    .replace(R.id.fragment_container, fragment).commit();*/
 
         }
 
@@ -105,10 +94,10 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            FirebaseAuth.getInstance().signOut();
+            /*FirebaseAuth.getInstance().signOut();
             Intent in=new Intent(this, LoginActivity_.class);
             startActivity(in);
-            finish();
+            finish();*/
             return true;
         }
 

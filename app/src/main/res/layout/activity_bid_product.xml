@@ -7,7 +7,7 @@
     android:background="@drawable/bgt1"
     android:orientation="vertical"
     tools:context="com.nishitadutta.auction.Activities.BidProductActivity">
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_bid_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,17 +46,17 @@
         android:text="Product Description" />
 
 
-    <android.support.design.widget.TextInputLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <android.support.design.widget.TextInputEditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_bid_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:hint="Bid Price"
         android:inputType="number" />
-    </android.support.design.widget.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <FrameLayout
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
